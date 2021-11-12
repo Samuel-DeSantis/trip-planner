@@ -1,0 +1,16 @@
+<% if session[:name] %>
+  <p>Hello <%= session[:name] %>!</p>
+<% else %>
+  <p>Please <%= link_to 'Sign in', '/auth/github', method: :post %> or <%= link_to 'Sign up','https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home' %> with GitHub.</p>
+<% end %>
+
+<%= link_to 'Create Trip', '/trips/new' %>
+
+<br>
+<br>
+
+<% if session[:name] %>
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <input type='submit' value='Logout'>
+  <% end %>
+<% end %>

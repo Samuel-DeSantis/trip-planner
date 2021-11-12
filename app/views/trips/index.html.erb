@@ -1,0 +1,5 @@
+<%= @trips.each do |t| %>
+    <ul>
+        <li><%= t.location.city %> - <%= t.location.country.name %></li>
+    </ul>
+<% end %>

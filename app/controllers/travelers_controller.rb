@@ -1,0 +1,3 @@
+class TravelersController < ApplicationController
+
+end
