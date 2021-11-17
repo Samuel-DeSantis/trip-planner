@@ -3,7 +3,7 @@ class TripsController < ApplicationController
     before_action :get_traveler
 
     def index
-        @trips = @traveler.trips
+        @trips = Trip.all.filter { |t| t.traveler_id == session[:id] }
     end
     
     def show
@@ -11,9 +11,12 @@ class TripsController < ApplicationController
     end
 
     def new
+        @trip = Trip.new
     end
 
     def create
+        Trip.create(trip_params)
+        redirect_to trips_path
     end
 
     def edit
@@ -29,7 +32,7 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-        params.require(:trip).permit(:traveler_id, :location_id, :cost)
+        params.require(:trip).permit(:traveler_id, :location_id)
     end
 
 end

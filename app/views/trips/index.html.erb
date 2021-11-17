@@ -1,5 +1,7 @@
-<%= @trips.each do |t| %>
+<h3></h3>
+
+<% @trips.each do |t| %>
     <ul>
-        <li><%= t.location.city %> - <%= t.location.country.name %></li>
+        <li><%= t.traveler.username %> - <%= t.location.city %>, <%= t.location.country %></li>
     </ul>
 <% end %>

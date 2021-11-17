@@ -1,0 +1,13 @@
+<h3><u>Locations</u></h3>
+
+<ul>
+    <% @locations.each do |location| %>
+        <li><%=link_to 'Edit', edit_location_path(location) %> | 
+        <%=link_to 'Remove', location_path(location), method: :delete %> | 
+        <%= link_to "#{location.city}, #{location.country}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %>
+        </li>
+    <% end %>
+</ul>
+<%# <%= link_to 'Remove', url:"/locations/#{location.id}" method: 'destroy'%>
+<%= link_to 'Add a Location', new_location_path %>
+<%#  <%= location.city , <%= location.country %>

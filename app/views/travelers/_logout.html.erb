@@ -1,0 +1,6 @@
+<% if session[:username] %>
+  <%= form_tag (logout_path) do %>
+    <input type='submit' value='Logout'>
+  <% end %>
+  <br>
+<% end %>

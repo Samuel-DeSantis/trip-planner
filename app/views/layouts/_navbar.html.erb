@@ -1,0 +1,8 @@
+<% if session[:username] %>
+    <nav style='display: inline-block'>
+        <%= link_to 'Locations', locations_path %>
+        <%= link_to 'Trips', trips_path %>
+        <%= link_to 'Your Profile', traveler_path(session[:id]) %>
+    </nav>
+    <br>
+<% end %>

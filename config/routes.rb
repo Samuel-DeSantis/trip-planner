@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  get '/auth/:provider/callback', to: 'travelers#create'
 
   post '/logout' => 'sessions#destroy'
 
-  resources :travelers, except: :index
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :travelers, only: [:new, :create, :show]
   resources :trips
-  resources :countries, only: [:new, :create]
+  resources :locations
 
   root 'welcome#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
