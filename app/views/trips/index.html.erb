@@ -2,6 +2,6 @@
 
 <% @trips.each do |t| %>
     <ul>
-        <li><%= t.traveler.username %> - <%= t.location.city %>, <%= t.location.country %></li>
+        <li><%= t.traveler.username %> - <%= t.location.city %>, <%= t.location.country_name %></li>
     </ul>
 <% end %>

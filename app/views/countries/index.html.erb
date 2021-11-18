@@ -1,0 +1,10 @@
+<h3><u>Countries</u></h3>
+<p>The following are the current countries a part of our travel packages:</p>
+
+<ol>
+    <% @countries.order(:name).each do |country|%>
+        <li><%= country.name %></li>
+    <% end %>
+</ol>
+
+<p>More countries are coming soon!</p>
