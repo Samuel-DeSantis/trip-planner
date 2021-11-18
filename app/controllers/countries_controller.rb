@@ -11,10 +11,6 @@ class CountriesController < ApplicationController
         @country = Country.create(country_params)
     end
 
-    def show
-        @country = Country.find_by_id(params[:id])
-    end
-
     def delete
         Country.find_by_id(params[:id]).destroy
         redirect_to countries_path

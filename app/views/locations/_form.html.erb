@@ -3,8 +3,9 @@
     <%= f.label :city %>
     <%= f.text_field :city %>
     <br>
-    <%= f.label :country %>
-    <%= f.text_field :country %>
+    <%= f.label :country_name %>
+    <%= display_name(@location, @path) %>
+    <%= country_select(@location, @path) %>
     <br>
     <br>
     <%= f.submit %>

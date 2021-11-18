@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :travelers, only: [:new, :create, :show]
   resources :trips
-  resources :locations
+  resources :locations do
+    resources :countries, only: [:new, :create, :destroy]
+  end
+  resources :countries
+
 
   root 'welcome#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -9,8 +9,11 @@ class LocationsController < ApplicationController
     end
 
     def create
-        Location.create(location_params)
-        redirect_to locations_path
+        if Location.create(location_params)
+            redirect_to locations_path
+        else
+            render :new
+        end
     end
 
     def show
@@ -39,7 +42,7 @@ class LocationsController < ApplicationController
     private
 
     def location_params
-        params.require(:location).permit(:city, :country)
+        params.require(:location).permit(:city, :country_id)
     end
 
 end
