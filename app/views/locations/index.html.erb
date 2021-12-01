@@ -1,13 +1,16 @@
-<h3><u>Locations</u></h3>
+<%# <h3><u>Locations</u></h3> %>
 
-<ul>
+<table style='border-collapse:separate;border-spacing:20px 10px;'>
+    <tr>
+        <th><h3><u>Locations</u></h3></th>
+        <th><h3><u>Options</u></h3></th>
+    </tr>
     <% @locations.order(:city).each do |location| %>
-        <li><%=link_to 'Edit', edit_location_path(location) %> | 
-        <%=link_to 'Remove', location_path(location), method: :delete %> | 
-        <%= link_to "#{location.city}, #{location.country_name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %>
-        </li>
+        <tr>
+            <td><%= link_to "#{location.city}, #{location.country_name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %></td>
+            <td><%=link_to 'Edit', edit_location_path(location) %> | <%=link_to 'Remove', location_path(location), method: :delete %></td>
+        </tr>
     <% end %>
-</ul>
-<%# <%= link_to 'Remove', url:"/locations/#{location.id}" method: 'destroy'%>
+</table>
+<br>
 <%= link_to 'Add a Location', new_location_path %>
-<%#  <%= location.city , <%= location.country %>
