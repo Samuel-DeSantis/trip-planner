@@ -1,4 +1,4 @@
-<%# <h3><u>Locations</u></h3> %>
+<p>Click a location below to add it to your trips!</p>
 
 <table style='border-collapse:separate;border-spacing:20px 10px;'>
     <tr>
@@ -7,7 +7,7 @@
     </tr>
     <% @locations.order(:city).each do |location| %>
         <tr>
-            <td><%= link_to "#{location.city}, #{location.country_name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %></td>
+            <td><%= link_to "#{location.name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %></td>
             <td><%=link_to 'Edit', edit_location_path(location) %> | <%=link_to 'Remove', location_path(location), method: :delete %></td>
         </tr>
     <% end %>

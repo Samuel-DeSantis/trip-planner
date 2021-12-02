@@ -12,4 +12,8 @@ class Location < ApplicationRecord
         self.country = Country.find_or_create_by(name: name)
     end
 
+    def name
+        self.city + ', ' + self.country_name
+    end
+
 end

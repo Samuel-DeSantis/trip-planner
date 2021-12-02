@@ -1,7 +1,19 @@
-<h3></h3>
+<h3>Trips</h3>
+<p>Add a <u>date</u> and <u>cost</u> when you are ready to take your trip planning to the next level!</p>
 
-<% @trips.each do |t| %>
-    <ul>
-        <li><%= t.traveler.username %> - <%= t.location.city %>, <%= t.location.country_name %></li>
-    </ul>
-<% end %>
+<table style='border-collapse:separate;border-spacing:20px 10px;'>
+    <tr>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Cost</th>
+    </tr>
+    <% @trips.each do |trip| %>
+        <tr>
+            <td><%= trip.location.name %></td>
+            <td><%= link_to trip.get_date, edit_trip_path(trip) %></td>
+            <td><%= link_to trip.get_cost, edit_trip_path(trip) %></td>
+            <td><%=link_to 'Remove', trip_path(trip), method: :delete %></td>
+        </tr>
+    <% end %>
+
+</table>
