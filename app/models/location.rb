@@ -1,5 +1,7 @@
 class Location < ApplicationRecord
 
+    default_scope {order(:city)}
+
     belongs_to :country
     has_many :trips
     has_many :travelers, through: :trips

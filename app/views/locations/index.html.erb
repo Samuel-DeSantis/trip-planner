@@ -5,7 +5,7 @@
         <th><h3><u>Locations</u></h3></th>
         <th><h3><u>Options</u></h3></th>
     </tr>
-    <% @locations.order(:city).each do |location| %>
+    <% @locations.each do |location| %>
         <tr>
             <td><%= link_to "#{location.name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %></td>
             <td><%=link_to 'Edit', edit_location_path(location) %> | <%=link_to 'Remove', location_path(location), method: :delete %></td>
