@@ -18,10 +18,18 @@ class Traveler < ApplicationRecord
     end
 
     def trips_total
-        self.trips.collect { |trip| trip.cost }.filter { |cost| !cost.nil? }.reduce(:+)
+        if collect_trip_costs.all? { |cost| cost.nil? }
+            '$0'
+        else
+            '$' + collect_trip_costs.filter { |cost| !cost.nil? }.reduce(:+).to_s
+        end
     end
 
     private
+
+    def collect_trip_costs
+        self.trips.collect { |trip| trip.cost }
+    end
 
     def date_today
         Time.zone.now.strftime('%m/%d/%Y')

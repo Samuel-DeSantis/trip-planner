@@ -1,0 +1,10 @@
+<h3>About</h3>
+
+<% if session[:username] %>
+    <p>Thanks for being a member, <%= session[:username] %>!</p>
+    <%= Location.find_by_id(Traveler.find_by_id(session[:id]).trips.last.location_id).name %><br><br>
+<% else %>
+    <p> Please login or signup<p>
+<% end %>
+
+<%= link_to 'Home', root_path %>

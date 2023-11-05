@@ -26,11 +26,12 @@ class TripsController < ApplicationController
 
     def update
         @trip = Trip.find_by_id(params[:id])
-        if params[:trip][:date].match('\d\d/\d\d/\d\d\d\d')
+        if date_formatted? &&
             @trip.update(trip_params(:date, :cost))
 
             redirect_to trips_path
         else
+            # flash.alert = "Please make sure the date is formatted correctly."
             render :edit
         end  
     end
@@ -43,6 +44,12 @@ class TripsController < ApplicationController
     end
 
     private
+
+    def date_formatted?
+        params[:trip][:date].match('^\d\d/\d\d/\d\d\d\d$')
+    end
+
+
 
     def get_traveler
         @traveler = Traveler.find_by_id(params[:id])

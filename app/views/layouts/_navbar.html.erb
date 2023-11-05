@@ -1,9 +1,39 @@
-<% if session[:username] %>
     <nav style='display: inline-block'>
-        <%= link_to 'Locations', locations_path %>
-        <%= link_to 'Countries', countries_path %>
-        <%= link_to 'Trips', trips_path %>
-        <%= link_to 'Your Profile', traveler_path(session[:id]) %>
+        <% if session[:username] %>
+            <%= link_to 'Locations', locations_path %>
+            <%= link_to 'Countries', countries_path %>
+            <%= link_to 'Trips', trips_path %>
+            <%= link_to 'Your Profile', traveler_path(session[:id]) %>
+        <% end %>
+        <%= link_to 'About', about_path %>
     </nav>
     <br>
-<% end %>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme='dark'>
+  <div class="container-fluid">
+    <a class="navbar-brand fs-2" href="#">Trip Planner</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%# <% if session[:username] %> %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Local Sign In', new_session_path, class: 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Local Sign Up', new_traveler_path, class: 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'GitHub Sign In', '/auth/github', method: :post, class: 'nav-link active' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'GitHub Sign Up','https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home', class: 'nav-link active' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<%= session[:trav_params] %>
