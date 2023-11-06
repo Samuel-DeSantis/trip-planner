@@ -1,16 +1,36 @@
-<p>Click a location below to add it to your trips!</p>
+<br>
+<p class='h5'>Click a location below to add it to your trips!</p>
 
-<table style='border-collapse:separate;border-spacing:20px 10px;'>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Locations</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each_with_index do |location, index| %>
+    <tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= link_to "#{location.name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post, class: 'nav-link active' %></td>
+      <td><%= link_to 'Edit', edit_location_path(location), class: 'btn btn-success' %> <%=link_to 'Remove', location_path(location), method: :delete, class: 'btn btn-danger' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add a Location', new_location_path, class: 'btn btn-primary' %>
+
+<%# <table style='border-collapse:separate;border-spacing:20px 10px;'>
     <tr>
         <th><h3><u>Locations</u></h3></th>
         <th><h3><u>Options</u></h3></th>
     </tr>
     <% @locations.each do |location| %>
-        <tr>
-            <td><%= link_to "#{location.name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post %></td>
-            <td><%=link_to 'Edit', edit_location_path(location) %> | <%=link_to 'Remove', location_path(location), method: :delete %></td>
-        </tr>
-    <% end %>
-</table>
-<br>
-<%= link_to 'Add a Location', new_location_path %>
+        <%# <tr> %>
+            <%# <td><%= link_to "#{location.name}", trips_path(trip: {location_id: location.id, traveler_id: session[:id]}), method: :post </td> %>
+            <%# <td><%= link_to 'Edit', edit_location_path(location)  | <%=link_to 'Remove', location_path(location), method: :delete </td> %>
+        <%# </tr> %>
+    <%# <% end %>
+<%# </table> %>
+<%# <br> %>

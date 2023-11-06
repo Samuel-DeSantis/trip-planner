@@ -1,6 +1,26 @@
 <h3>Trips</h3>
 <p>Add a <u>date</u> and <u>cost</u> when you are ready to take your trip planning to the next level!</p>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Location</th>
+      <th scope="col">Date</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip.location.name %></td>
+        <td><%= link_to trip.get_date, edit_trip_path(trip), class: 'btn btn-primary' %></td>
+        <td><%= link_to trip.get_cost, edit_trip_path(trip), class: 'btn btn-primary' %></td>
+        <td><%=link_to 'Delete', trip_path(trip), method: :delete, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <table style='border-collapse:separate;border-spacing:20px 10px;'>
     <tr>
         <th>Location</th>
