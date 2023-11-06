@@ -21,19 +21,19 @@
   </tbody>
 </table>
 
-<table style='border-collapse:separate;border-spacing:20px 10px;'>
-    <tr>
-        <th>Location</th>
-        <th>Date</th>
-        <th>Cost</th>
-    </tr>
-    <% @trips.each do |trip| %>
-        <tr>
-            <td><%= trip.location.name %></td>
-            <td><%= link_to trip.get_date, edit_trip_path(trip) %></td>
-            <td><%= link_to trip.get_cost, edit_trip_path(trip) %></td>
-            <td><%=link_to 'Remove', trip_path(trip), method: :delete %></td>
-        </tr>
-    <% end %>
+<%# <table style='border-collapse:separate;border-spacing:20px 10px;'> %>
+    <%# <tr> %>
+        <%# <th>Location</th> %>
+        <%# <th>Date</th> %>
+        <%# <th>Cost</th> %>
+    <%# </tr> %>
+    <%# <% @trips.each do |trip|  %>
+        <%# <tr> %>
+            <%# <td><%= trip.location.name </td> %>
+            <%# <td><%= link_to trip.get_date, edit_trip_path(trip) </td> %>
+            <%# <td><%= link_to trip.get_cost, edit_trip_path(trip) </td> %>
+            <%# <td><%=link_to 'Remove', trip_path(trip), method: :delete </td> %>
+        <%# </tr> %>
+    <%# <% end  %>
 
-</table>
+<%# </table> %>
