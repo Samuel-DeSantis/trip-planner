@@ -1,10 +1,10 @@
-<h3 class='display-5'>About</h3>
+<h3 class='display-5 text-white'>About</h3>
 
 <% if session[:username] %>
-    <p class='h6'>Thanks for being a member, <%= session[:username] %>!</p>
-    <%= Location.find_by_id(Traveler.find_by_id(session[:id]).trips.last.location_id).name %><br><br>
+    <p class='h6 text-white'>Thanks for being a member, <%= session[:username] %>!</p>
+    <p class='text-white'><%= Location.find_by_id(Traveler.find_by_id(session[:id]).trips.last.location_id).name %></p>
 <% else %>
-    <p class='h6'> Please login or signup<p>
+    <p class='h6 text-white'> Please login or signup<p>
 <% end %>
 
-<%= link_to 'Home', root_path %>
+<%= link_to 'Home', root_path, class: 'btn btn-primary' %>
